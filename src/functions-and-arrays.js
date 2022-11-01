@@ -15,69 +15,14 @@ function maxOfTwoNumbers(num1, num2) {
 const words = ['mystery', 'brother', 'aviator', 'crocodile', 'pearl', 'orchard', 'crackpot'];
 
 function findLongestWord(wordsArray) {
-  /* let firstOccurence = '';
-  let occurencesAmount = 0;
+  if (!wordsArray || wordsArray.length === 0) return null;
   let longestWord = ''
-  if (wordsArray.length === 0) {
-    return null;
-  } else if (wordsArray.length === 1) {
-    return wordsArray[0];
-  } else if (wordsArray.length > 1){
-    for (i = 0; i < wordsArray.length -1; i++) {
-      if (wordsArray[i].length < wordsArray[i + 1].length) {
-        longestWord = wordsArray[i + 1];
-      }
-      return longestWord;
-    }
-    
-    for (i = 0; i < wordsArray.length; i++){
-      if (wordsArray[i] === longestWord) {
-        firstOccurence = wordsArray[i];
-        occurencesAmount++
-      }
-    }
-    if (occurencesAmount > 0) {
-      return firstOccurence;
-    }
-  } */
-  let longestWord = '';
-  let firstOccurence = '';
-  let occurencesAmount = 0;
-  
-  if (wordsArray == '') {
-    return null;
-  }
-  if (wordsArray.length == 1) {
-    return wordsArray[0];
-  }
-  for (i = 0; i < wordsArray.length -1; i++) {
-    if (wordsArray[i].length > wordsArray[i + 1].length) {
+  for (let i = 0; i < wordsArray.length; i++){
+    if (wordsArray[i].length > longestWord.length) {
       longestWord = wordsArray[i];
-    } else if (wordsArray[i].length < wordsArray[i + 1].length) {
-      longestWord = wordsArray[i + 1];
-    } else if (wordsArray[i].length == wordsArray[i + 1].length) {
-      firstOccurence = wordsArray[i];
-      console.log(firstOccurence);
-      console.log(longestWord);
-      return firstOccurence;
     }
   }
-  return wordsArray.find(longestWord => longestWord === firstOccurence);
-  /* wordsArray.forEach(element => {
-    if (element === longestWord) {
-      occurencesAmount++
-    }
-  });
-  console.log(occurencesAmount);
-  if (occurencesAmount === 1) {
-    for (i = 0; i < wordsArray.length -1 ; i++) {
-      if (wordsArray[i].length < wordsArray[i+1].length) {
-        longestWord = wordsArray[i + 1];
-      }
-    }
-    console.log(longestWord);
-    return longestWord
-  }   */
+  return longestWord;
 }
 const arrwrd = ['a', 'zab', '12abc', '$$abcd', 'abcde', 'ironhack'];
 findLongestWord(arrwrd)
@@ -284,31 +229,16 @@ const wordsUnique = [
 
 function uniquifyArray(testArr) {
   let compareArray = [];
-  let unique = false;
-  compareArray = new Array(testArr[0]);
-  unifiedArray = testArr;
-  
-  
-  if (testArr.length === 0) {
+  if (testArr.length != 0) {
+    for (let i = 0; i < testArr.length; i++) {
+      if (!compareArray.includes(testArr[i])) {
+        compareArray.push(testArr[i]);
+      }
+    }
+    return compareArray
+  } else {
     return null;
   }
-  
-  testArr.forEach(element => {
-    if (compareArray == element) {
-      unique = true;
-    } else {
-      unique = false;
-    }
-  });
-  if (unique) {
-    return compareArray;
-  } else if (!unique) {
-    return testArr;
-  }
-  let uniqueChars = testArr.filter((element, index) => {
-    testArr.indexOf(element) === index;
-  });
-  return uniqueChars;
 }
 const test = ['iPhone', 'Samsung', 'Android', 'iOS', 'iPhone', 'Samsung', 'Nokia', 'Blackberry', 'Android']
 uniquifyArray(test);
